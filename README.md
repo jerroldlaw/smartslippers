@@ -26,3 +26,9 @@ Python
 ```
 
 ![screenshot](https://i.imgur.com/sUfkXCp.png)
+
+## Credits
+* [jerroldlaw](https://github.com/jerroldlaw)
+* [alvinwang19](https://github.com/alvinwang19)
+* [dennis-ng](https://github.com/dennis-ng)
+* [joncwr](https://github.com/joncwr)
