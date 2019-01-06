@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+
+<!--META-->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="author" content="" />
+<meta name="copyright" content="Copyright  . All Rights Reserved." />
+<link rel="shortcut icon" type="image/x-icon" href=".ico" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" sizes="180x180" href="img/icon.png">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-startup-image" href="img/launch.png">
+<title>Smart Slippers</title>
+
+<!--STYLESHEETS-->
+<link href="css/foundation.css" rel="stylesheet" />
+<link href="css/normalize.css" rel="stylesheet" />
+<link href="css/main_app.css" rel="stylesheet" />
+
+<!--TYPEKIT-->
+<link rel="stylesheet" href="https://use.typekit.net/qid1htb.css">
+
+</head>
+<body>
+  <!-- <div class="launch">
+  </div> -->
+  <div id="fallDetected" class="fallDetected">
+    <div class="fallDetected-modal">
+      <div class="fallDetected-modal-text">
+        FALL DETECTED!
+      </div>
+    </div>
+  </div>
+<div class="main">
+  <div class="navBar">
+    <div class="navBar-title" id="navBar-title">
+      Home
+    </div>
+  </div>
+  <div class="contentContainer">
+    <div class="content" id="content-1">
+      <div class="proclaim">
+        <h1 id="proclaim-1">Don't worry, Grandma is safe!</h1>
+        <h4 id="proclaim-2">Slipper is active now and currently in use.</h4>
+      </div>
+      <div class="mapping">
+        <h3>Room Map</h3>
+        <div class="line"></div>
+
+        <div class="mapping-map">
+          <div class="fp">
+            <div class="fp-human">
+              <div id="fp-human-marker" class="fp-human-marker">
+                <div class="fp-human-marker-container">
+                  <div class="fp-human-marker-main"></div>
+                </div>
+                <div class="fp-human-marker-container">
+                  <div class="fp-human-marker-2nd"></div>
+                </div>
+                <div class="fp-human-marker-container">
+                  <div class="fp-human-marker-3rd"></div>
+                </div>
+              </div>
+            </div>
+            <div class="fp-border"></div>
+            <div class="fp-map">
+              <div class="fp-map-kitchen">
+                <div class="fp-door"></div>
+                <div class="fp-room">
+                  <div class="fp-map-text">
+                    <h3>Kitchen</h3>
+                  </div>
+                  <div id="fp-map-kitchen-bg" class="bg"></div>
+                </div>
+              </div>
+              <div class="fp-map-bedroom">
+                <div class="fp-door"></div>
+                <div class="fp-room">
+                  <div class="fp-map-text">
+                    <h3>Bedroom</h3>
+                  </div>
+                  <div id="fp-map-bedroom-bg" class="bg"></div>
+                </div>
+              </div>
+              <div class="fp-map-tolietStudy">
+                <div class="fp-map-toliet">
+                  <div class="fp-door"></div>
+                  <div class="fp-room">
+                    <div class="fp-map-text">
+                      <h3>Toliet</h3>
+                    </div>
+                    <div id="fp-map-toliet-bg" class="bg"></div>
+                  </div>
+                </div>
+                <div class="fp-map-study">
+                  <div class="fp-door"></div>
+                  <div class="fp-room">
+                    <div class="fp-map-text">
+                      <h3>Study</h3>
+                    </div>
+                    <div id="fp-map-study-bg" class="bg"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="fp-map-livingRoom1">
+                <div class="fp-door"></div>
+                <div class="fp-room">
+                  <div class="fp-map-text">
+                    <h3>Living Room</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="fp-map-livingRoom2">
+              </div>
+              <div id="fp-map-livingRoom-bg" class="bg"></div>
+            </div>
+          </div>
+          <div class="map-text">
+            <div class="floorPlanInfo-item">
+              <h3>Current Location</h3>
+              <h2 id="floorPlanInfo-item-2">hello</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content" id="content-2">
+      <div class="list-item">
+        Notifications
+        <div class="arrow"></div>
+      </div>
+      <div class="list-item">
+        Slipper Settings
+        <div class="arrow"></div>
+      </div>
+      <div class="list-item">
+        Privacy Policy
+        <div class="arrow"></div>
+      </div>
+      <div class="list-item">
+        Feedback
+        <div class="arrow"></div>
+      </div>
+      <div class="list-item">
+        Help
+        <div class="arrow"></div>
+      </div>
+      <div class="list-footer">
+        ver.08
+      </div>
+    </div>
+  </div>
+  <div class="tabBar">
+    <div class="tabBar-button" id="content-1-btn">
+      <div class="icon"></div>
+    </div>
+    <div class="tabBar-button" id="content-2-btn">
+      <div class="icon"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script>
+// FALL DETECTION
+var fallModal = document.getElementById('fallDetected')
+var fallDetected = false;
+
+if (fallDetected) {
+  fallModal.className = "fallDetected fallfade"
+  fallModal.style.display = "flex"
+}
+else{
+  fallModal.className = "fallDetected"
+
+}
+
+  var content1 = document.getElementById("content-1")
+  var content2 = document.getElementById("content-2")
+  var content1Btn = document.getElementById("content-1-btn")
+  var content2Btn = document.getElementById("content-2-btn")
+  var title = document.getElementById("navBar-title")
+
+  content1Btn.addEventListener("click", function() {
+    var content1Class = "content page1in"
+    var content2Class = "content page2out"
+    content1.className = content1Class
+    content2.className = content2Class
+    title.innerHTML = "Home"
+    // console.log("page1");
+    // content1.style.display = 'block'
+    // content2.style.display = 'none'
+  })
+
+  content2Btn.addEventListener("click", function() {
+    var content1Class = "content page1out"
+    var content2Class = "content page2in"
+    content1.className = content1Class
+    content2.className = content2Class
+    title.innerHTML = "Settings"
+    // content2.style.display = 'block'
+  })
+  //
+
+  /// proclaim
+  var proclaim1 = document.getElementById("proclaim-1")
+  var proclaim2 = document.getElementById("proclaim-2")
+  var isActive = true
+  if(isActive){
+    proclaim1.innerHTML = "Don't worry, Grandma is safe!"
+    proclaim2.innerHTML = "Slipper is active now and currently in use."
+  }
+  else {
+    proclaim1.innerHTML = "No one is wearing the slippers."
+    proclaim2.innerHTML = "Slippers not currently in use."
+  }
+
+  /// Room
+  // from serve
+  const MAX_X = 25
+  const MAX_Y = 25
+
+  // actual pixels
+  const MAX_X_MAP = 385
+  const MAX_Y_MAP = 385
+
+  // grid
+  const MAX_X_GRID = 100
+  const MAX_Y_GRID = 100
+
+  // walk
+  var current_location_x = 0
+  var current_location_y = 0
+  var interval_walking;
+
+  // ROOM PLAN
+  function setActiveRoom(x, y){
+    var bedroomBg = document.getElementById("fp-map-bedroom-bg")
+    var kitchenBg = document.getElementById("fp-map-kitchen-bg")
+    var tolietBg = document.getElementById("fp-map-toliet-bg")
+    var studyBg = document.getElementById("fp-map-study-bg")
+    var livingRoomBg = document.getElementById("fp-map-livingRoom-bg")
+    let floorPlanInfo2 = document.getElementById("floorPlanInfo-item-2")
+
+    var transX = x/MAX_X_MAP * MAX_X_GRID
+    var transY = y/MAX_Y_MAP * MAX_Y_GRID
+
+    // bedroom
+    if(transX >= 0 && transX <= 40 && transY >= 0 && transY <= 60 ){
+      console.log("in bedroom");
+      bedroomBg.style.display = "block"
+      kitchenBg.style.display = "none"
+      tolietBg.style.display = "none"
+      studyBg.style.display = "none"
+      livingRoomBg.style.display = "none"
+      floorPlanInfo2.innerHTML = "Bedroom"
+    }
+    // kitchen
+    else if(transX >= 0 && transX <= 40 && transY >= 61 && transY <= 100){
+      console.log("in kitchen");
+      bedroomBg.style.display = "none"
+      kitchenBg.style.display = "block"
+      tolietBg.style.display = "none"
+      studyBg.style.display = "none"
+      livingRoomBg.style.display = "none"
+      floorPlanInfo2.innerHTML = "Kitchen"
+    }
+    // toliet
+    else if( transX >= 51 && transX <= 100 && transY >= 0 && transY <= 24){
+      console.log("in toliet");
+      bedroomBg.style.display = "none"
+      kitchenBg.style.display = "none"
+      tolietBg.style.display = "block"
+      studyBg.style.display = "none"
+      livingRoomBg.style.display = "none"
+      floorPlanInfo2.innerHTML = "Toliet"
+    }
+    //
+    else if( transX >= 51 && transX <= 100 && transY >= 25 && transY <= 60 ){
+      console.log("in study");
+      bedroomBg.style.display = "none"
+      kitchenBg.style.display = "none"
+      tolietBg.style.display = "none"
+      studyBg.style.display = "block"
+      livingRoomBg.style.display = "none"
+      floorPlanInfo2.innerHTML = "Study"
+    }
+    else {
+      console.log("in living room");
+      bedroomBg.style.display = "none"
+      kitchenBg.style.display = "none"
+      tolietBg.style.display = "none"
+      studyBg.style.display = "none"
+      livingRoomBg.style.display = "block"
+      floorPlanInfo2.innerHTML = "Living Room"
+    }
+  }
+
+  function walk(x, y){
+    var marker = document.getElementById('fp-human-marker')
+    clearInterval(interval_walking)
+    if (x !== current_location_x || y !== current_location_y){
+      interval_walking = setInterval(function(){
+        if (x !== current_location_x || y !== current_location_y){
+          if(x !== current_location_x){
+            if(x < current_location_x){
+              current_location_x--
+            }
+            else{
+              current_location_x++
+            }
+          }
+          if(y !== current_location_y){
+            if(y < current_location_y){
+              current_location_y--
+            }
+            else {
+              current_location_y++
+            }
+          }
+          marker.style.top = current_location_y + 'px'
+          marker.style.left = current_location_x + 'px'
+          setActiveRoom(current_location_x, current_location_y)
+        }
+        else{
+          clearInterval(interval_walking)
+        }
+      }, 100);
+    }
+  }
+
+  function placeMarker(x, y){
+    var transXMap = parseInt(x/MAX_X * MAX_X_MAP)
+    var transYMap = parseInt(y/MAX_Y * MAX_Y_MAP)
+
+    if(transXMap < 14){
+      transXMap = 14
+    }
+    else if(transXMap > MAX_X_MAP - 14){
+      transXMap = MAX_X_MAP - 14
+    }
+
+    if(transYMap < 14){
+      transYMap = 14
+    }
+    else if(transYMap > MAX_Y_MAP - 14){
+      transYMap = MAX_Y_MAP - 14
+    }
+    walk(transXMap, transYMap)
+  }
+
+  // DATATATATATA
+  var socket = io('http://192.168.43.235:3000/')
+
+  socket.on('data', function(data){
+    console.log(data);
+    if(!data['data']){
+      data = JSON.parse(data)
+    }
+
+    if(data['data'] === 'beacon'){
+      placeMarker(data.distances['x'], data.distances['y'])
+    }
+  })
+</script>
+
+</body>
+</html>

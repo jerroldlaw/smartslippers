@@ -1,0 +1,708 @@
+/* general
+  =================================================================== */
+  html{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #3F0054;
+    color: #000;
+    font-family: "ocr-b-std", sans-serif;
+    font-size: 100%;
+  }
+
+  body{
+    height: 100%;
+    width: 100%;
+
+  }
+
+  /* typography
+    =================================================================== */
+    h1{
+      font-size: 2em;
+      font-weight: 400;
+      line-height: 1em;
+      font-family: "din-condensed";
+    }
+
+    h2{
+      font-size: 1.4em;
+      line-height: 1em;
+      font-weight: 400;
+      font-family: "din-condensed";
+      margin-top: 8px;
+    }
+
+    h3{
+      font-size: 1em;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #3FC97B;
+      font-family: "ocr-b-std";
+      letter-spacing: -1px;
+    }
+
+    h4{
+      font-size: .8125em;
+      font-weight: 400;
+      color: rgba(255, 255, 255, .67);
+      font-family: "ocr-b-std";
+      letter-spacing: -1px;
+    }
+
+    strong{
+      font-weight: 600;
+    }
+
+    p{
+      margin-bottom: 1em;
+    }
+
+  /* buttons
+    =================================================================== */
+    a.btn:link, .btn, button{
+      display: inline-block;
+      height: 60px;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      margin: 0;
+      color: #0041FD;
+      background-color: #FDD24C;
+      font: 18px/60px "futura-pt", sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      -webkit-border-radius: 35px;
+         -moz-border-radius: 35px;
+              border-radius: 35px;
+    }
+
+    a.btn:hover, .btn:hover, button:hover{
+      color: #0041FD;
+      background-color: #FFDA66;
+    }
+
+    a.btn:active, .btn:active, button:active{
+      color: #0041FD;
+      background-color: #E3B936;
+    }
+
+    a.btn:focus, .btn:focus, button:focus{
+      outline: none;
+    }
+
+    a.btn:disabled, .btn:disabled, button:disabled{
+      background-color: #ccc;
+      color: #999;
+    }
+
+    .main{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navBar{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 64px;
+      background-color: #3F0054;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .contentContainer{
+      width: 100%;
+      flex: 1;
+      height: 300px;
+      position: relative;
+      background-color: #3F0054;
+    }
+
+    .content{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      color: #fff;
+    }
+
+    .tabBar{
+      width: 100%;
+      height: 49px;
+      background-color: #fff;
+      display: flex;
+    }
+
+    .tabBar-button{
+      flex: 1;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon{
+      height: 24px;
+      width: 24px;
+      background-color: #fff;
+      -webkit-mask: url('../img/ic_home.svg');
+    }
+
+    #content-2-btn .icon{
+      -webkit-mask: url('../img/ic_settings.svg');
+    }
+
+
+    .line{
+      height: 1px;
+      width: 100%;
+      background-color: #3FC97B;
+      margin-top: 10px;
+      opacity: .5;
+    }
+
+
+    /* page and transitions
+      =================================================================== */
+      #content-1{
+        /* background-color: yellow; */
+        padding: 0 15px 30px 15px;
+        overflow-y: auto;
+      }
+
+      #content-2{
+        /* background-color: blue; */
+        padding: 0 15px 30px 15px;
+        transform: translateX(10000px);
+        position: relative;
+      }
+
+      .page1out{
+        -webkit-animation-name: page1Out;
+        -webkit-animation-duration: .2s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-fill-mode: forwards;
+      }
+
+      .page2in{
+        -webkit-animation-name: page2in;
+        -webkit-animation-duration: .2s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-fill-mode: forwards;
+      }
+
+      @-webkit-keyframes page1Out {
+        0% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
+        99%{
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        100%{
+          transform: translateX(-100000px);
+        }
+      }
+
+      @-webkit-keyframes page2in {
+        0% {
+          opacity: 0;
+          transform: translateX(10px);
+        }
+        100%{
+          opacity: 1;
+          transform: translateX(0px);
+        }
+      }
+
+      .page2out{
+        -webkit-animation-name: page2Out;
+        -webkit-animation-duration: .2s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-fill-mode: forwards;
+      }
+
+      .page1in{
+        -webkit-animation-name: page1in;
+        -webkit-animation-duration: .2s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-fill-mode: forwards;
+      }
+
+      @-webkit-keyframes page2Out {
+        0% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
+        99%{
+          opacity: 0;
+          transform: translateX(10px);
+        }
+        100%{
+          transform: translateX(-100000px);
+        }
+      }
+
+      @-webkit-keyframes page1in {
+        0% {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        100%{
+          opacity: 1;
+          transform: translateX(0px);
+        }
+      }
+
+
+      /* page 1
+        =================================================================== */
+        .proclaim > h1{
+          font-size: 3em;
+          margin-top: 10px;
+        }
+
+        .proclaim > h4{
+          margin-top: 10px;
+        }
+
+        /* mapp
+          =================================================================== */
+          .mapping{
+            margin-top: 50px;
+          }
+
+          .map-text{
+            margin-top: 20px;
+          }
+
+          .fp{
+            width: 385px;
+            height: 385px;
+            margin-top: 20px;
+            position: relative;
+          }
+
+          .fp-map,
+          .fp-border,
+          .fp-human{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          .fp-human{
+            z-index: 4;
+          }
+
+          .fp-human-marker{
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            margin-left: -20px;
+            margin-top: -20px;
+            border-radius: 40px;
+          }
+
+          .fp-human-marker-container{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .fp-human-marker-main{
+            height: 40%;
+            width: 40%;
+            border-radius: 50px;
+            background-color: rgba(215, 244, 105, 1);
+          }
+
+          .fp-human-marker-2nd{
+            height: 70%;
+            width: 70%;
+            border-radius: 50px;
+            background-color: rgba(215, 244, 105, .2);
+            -webkit-animation-name: markerAni1;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+          }
+
+          .fp-human-marker-3rd{
+            height: 100%;
+            width: 100%;
+            border-radius: 50px;
+            background-color: rgba(215, 244, 105, .2);
+            -webkit-animation-name: markerAni2;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+          }
+
+          @-webkit-keyframes markerAni1 {
+            0% {
+              opacity: 0;
+            }
+            30% {
+              opacity: 1;
+            }
+            70% {
+              opacity: 1;
+            }
+            85%{
+              opacity: 1;
+            }
+            100%{
+              opacity: 0;
+            }
+          }
+          @-webkit-keyframes markerAni2 {
+            0% {
+              opacity: 0;
+            }
+            30% {
+              opacity: 0;
+            }
+            70% {
+              opacity: 1;
+            }
+            100%{
+              opacity: 0;
+            }
+          }
+
+          .fp-map{
+            overflow: hidden;
+          }
+
+          .fp-map-bedroom,
+          .fp-map-kitchen,
+          .fp-map-toliet,
+          .fp-map-study,
+          .fp-map-livingRoom1,
+          .fp-map-livingRoom2{
+            position: absolute;
+            overflow: hidden;
+          }
+
+          .fp-map-bedroom,
+          .fp-map-kitchen,
+          .fp-map-toliet,
+          .fp-map-study{
+            background-color: #3F0054;
+            z-index: 1;
+          }
+
+          .fp-room{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #9EC121;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1;
+          }
+
+          .fp-map-text{
+            text-transform: uppercase;
+          }
+
+          .fp-map-text > h3{
+            color: #fff;
+          }
+
+          .fp-door{
+            position: absolute;
+            width: 33px;
+            height: 33px;
+            background-image: url('../img/map_door_2.svg');
+            z-index: 2;
+          }
+
+          .fp-map-bedroom{
+            top: 0;
+            left: 0;
+            height: 60%;
+            width: 40%;
+          }
+
+          .fp-map-bedroom > .fp-door{
+            top: 5%;
+            right: 0;
+            transform: rotate(-90deg);
+          }
+
+          .fp-map-kitchen{
+            bottom: 0;
+            left: 0;
+            height: 40%;
+            width: 40%;
+          }
+
+          .fp-map-kitchen > .fp-door{
+            top: 10%;
+            right: 0;
+            transform: rotate(-90deg);
+          }
+
+          .fp-map-kitchen > .fp-room{
+            border-top: 0;
+          }
+
+          .fp-map-tolietStudy{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 60%;
+          }
+
+          .fp-map-toliet{
+            top: 0;
+            left: 0;
+            height: 40%;
+            width: 100%;
+          }
+
+          .fp-map-toliet > .fp-door{
+            top: 10%;
+            left: 0;
+            transform: rotate(90deg);
+          }
+
+          .fp-map-study{
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+          }
+
+          .fp-map-study > .fp-door{
+            top: 10%;
+            left: 0;
+            transform: rotate(90deg);
+          }
+
+          .fp-map-study > .fp-room{
+            border-top: 0;
+          }
+
+          .fp-map-livingRoom1{
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 40%;
+            border: 0;
+          }
+
+          .fp-map-livingRoom1 > .fp-room{
+            border: 0;
+          }
+
+          .fp-map-livingRoom1  > .fp-door{
+            bottom: 0;
+            right: 10%;
+            transform: rotate(0deg);
+          }
+
+          .fp-map-livingRoom2{
+            top: 0;
+            left: 40%;
+            width: 10%;
+            height: 60%;
+            border: 0;
+          }
+
+          .fp-map-livingRoom2 > .fp-room{
+            border: 0;
+          }
+
+          .fp-border{
+            border: 1px solid #9EC121;
+          }
+
+
+          @-webkit-keyframes MOVE-BG {
+            from {
+              -webkit-transform: translateX(0);
+            }
+            to {
+              -webkit-transform: translateX(52px);
+            }
+          }
+
+          .bg{
+            display: none;
+            position: absolute;
+            left: -52px;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+
+            background: -webkit-repeating-linear-gradient(
+              225deg,
+              rgba(255,255,255,.05) 1px,
+              rgba(255,255,255,.1) 2px,
+              rgba(255,255,255,.1) 11px,
+              rgba(255,255,255,.05) 12px,
+              rgba(255,255,255,.05) 20px
+            );
+
+            -webkit-animation-name: MOVE-BG;
+            -webkit-animation-duration: 4s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+          }
+
+  /* page2
+    =================================================================== */
+    .list-item{
+      border-top: 1px solid rgba(255,255,255,.3);
+      padding: 20px 0;
+      position: relative;
+    }
+
+    .arrow{
+      height: 24px;
+      width: 24px;
+      background-color: #fff;
+      -webkit-mask: url('../img/ic_arrow.svg');
+      position: absolute;
+      top: 17px;
+      right: 0;
+    }
+
+    .list-footer{
+      margin-top: 10px;
+      font-size: 10px;
+      color: rgba(255,255,255,.4)
+
+    }
+
+
+    /* launch
+      =================================================================== */
+      .launch{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #3F0054 url('../img/launch.png') no-repeat center/100% 100%;
+        z-index: 999;
+        opacity: 1;
+        -webkit-animation-name: fadeOut;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-fill-mode: forwards;
+      }
+
+      @-webkit-keyframes fadeOut {
+        0% {
+          opacity: 1;
+          left: 0;
+        }
+        90%{
+          opacity: 0;
+          left: 0;
+        }
+        100%{
+          opacity: 0;
+          left: 1000px;
+        }
+      }
+
+      /* fall
+        =================================================================== */
+        /* Fall Detection
+          =================================================================== */
+          .fallDetected{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0,0,0,.4)
+          }
+
+          .fallfade{
+            -webkit-animation-name: fallFade;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-fill-mode: forwards;
+          }
+
+          .fallDetected-modal{
+            font-family: "din-condensed";
+            font-size: 30px;
+            padding: 20px;
+            -webkit-border-radius: 20px;
+               -moz-border-radius: 20px;
+                    border-radius: 20px;
+            color: #fff;
+            background-color: red;
+          }
+
+          .fallDetected-modal-text{
+            -webkit-animation-name: blinking;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-fill-mode: forwards;
+          }
+
+          @-webkit-keyframes blinking {
+            0% {
+              opacity: 0;
+            }
+            50%{
+              opacity: 1;
+            }
+            100%{
+              opacity: 0;
+            }
+          }
+
+          @-webkit-keyframes fallFade {
+            0% {
+              opacity: 0;
+            }
+            100%{
+              opacity: 1;
+            }
+          }
+
+
+
+
+      #fp-map-livingRoom-bg{
+        z-index: 0;
+      }

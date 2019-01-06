@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+
+<!--META-->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="author" content="" />
+<meta name="copyright" content="Copyright  . All Rights Reserved." />
+<link rel="shortcut icon" type="image/x-icon" href=".ico" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" sizes="180x180" href="img/icon.png">
+<title></title>
+
+<!--STYLESHEETS-->
+<link href="css/foundation.css" rel="stylesheet" />
+<link href="css/normalize.css" rel="stylesheet" />
+<link href="css/main.css" rel="stylesheet" />
+
+<!--TYPEKIT-->
+<link rel="stylesheet" href="https://use.typekit.net/qid1htb.css">
+
+</head>
+<body>
+  <div id="fallDetected" class="fallDetected">
+    <div class="fallDetected-modal">
+      <div class="fallDetected-modal-text">
+        FALL DETECTED!
+      </div>
+    </div>
+  </div>
+  <div class="flexCols">
+    <div class="flexCols-6 borderRight">
+      <div class="flexRows">
+        <div class="flexRow-2 borderBottom">
+          <div class="map">
+            <div class="floorPlan">
+              <div class="section-text">
+                <div class="section-text-header">
+                  <h3>Room Plan</h3>
+                </div>
+              </div>
+              <div class="floorplan-plan">
+                <div class="fp">
+                  <div class="fp-human">
+                    <div id="fp-human-marker" class="fp-human-marker">
+                      <div class="fp-human-marker-container">
+                        <div class="fp-human-marker-main"></div>
+                      </div>
+                      <div class="fp-human-marker-container">
+                        <div class="fp-human-marker-2nd"></div>
+                      </div>
+                      <div class="fp-human-marker-container">
+                        <div class="fp-human-marker-3rd"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="fp-border"></div>
+                  <div class="fp-map">
+                    <div class="fp-map-kitchen">
+                      <div class="fp-door"></div>
+                      <div class="fp-room">
+                        <div class="fp-map-text">
+                          <h3>Kitchen</h3>
+                        </div>
+                        <div id="fp-map-kitchen-bg" class="bg"></div>
+                      </div>
+                    </div>
+                    <div class="fp-map-bedroom">
+                      <div class="fp-door"></div>
+                      <div class="fp-room">
+                        <div class="fp-map-text">
+                          <h3>Bedroom</h3>
+                        </div>
+                        <div id="fp-map-bedroom-bg" class="bg"></div>
+                      </div>
+                    </div>
+                    <div class="fp-map-tolietStudy">
+                      <div class="fp-map-toliet">
+                        <div class="fp-door"></div>
+                        <div class="fp-room">
+                          <div class="fp-map-text">
+                            <h3>Toliet</h3>
+                          </div>
+                          <div id="fp-map-toliet-bg" class="bg"></div>
+                        </div>
+                      </div>
+                      <div class="fp-map-study">
+                        <div class="fp-door"></div>
+                        <div class="fp-room">
+                          <div class="fp-map-text">
+                            <h3>Study</h3>
+                          </div>
+                          <div id="fp-map-study-bg" class="bg"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fp-map-livingRoom1">
+                      <div class="fp-door"></div>
+                      <div class="fp-room">
+                        <div class="fp-map-text">
+                          <h3>Living Room</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fp-map-livingRoom2">
+                    </div>
+                    <div id="fp-map-livingRoom-bg" class="bg"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="floorPlanInfo">
+              <div class="section-text">
+                <div class="floorPlanInfo-item">
+                  <h3>Risk Assessment</h3>
+                  <h2 id="floorPlanInfo-item-1">Low</h2>
+                </div>
+                <div class="floorPlanInfo-item">
+                  <h3>Current Location</h3>
+                  <h2 id="floorPlanInfo-item-2"></h2>
+                </div>
+                <!-- <div class="floorPlanInfo-item">
+                  <h3>Idle Time</h3>
+                  <h2 id="floorPlanInfo-item-3"></h2>
+                </div>
+                <div class="floorPlanInfo-item">
+                  <h3>Idle Time</h3>
+                  <h2 id="floorPlanInfo-item-4"></h2>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flexRow-2">
+          <div class="gyro">
+            <div class="gyro-text">
+              <div class="gyro-text-header">
+                <h3>LEFT FOOT</h3>
+                <h3>3-AXIS GYRO</h3>
+              </div>
+              <div class="gyro-text-values">
+                <div class="gyro-text-values-item">
+                  <h1 id="gyro-text-values-item-x-left">0</h1>
+                  <h4>X-AXIS</h4>
+                </div>
+                <div class="gyro-text-values-item">
+                  <h1 id="gyro-text-values-item-y-left">0</h1>
+                  <h4>Y-AXIS</h4>
+                </div>
+                <div class="gyro-text-values-item">
+                  <h1 id="gyro-text-values-item-z-left">0</h1>
+                  <h4>Z-AXIS</h4>
+                </div>
+              </div>
+            </div>
+            <div class="gyro-diagram">
+              <section class="boxContainer">
+                <div id="box-left" class="box">
+                  <figure class="right"></figure>
+                  <figure class="left"></figure>
+                  <figure class="front"></figure>
+                  <figure class="back"></figure>
+                  <figure class="top"></figure>
+                  <figure class="bottom"></figure>
+                  <div class="base">
+                    <figure class="right">Right</figure>
+                    <figure class="left">Left</figure>
+                    <figure class="front">Front</figure>
+                    <figure class="back">Back</figure>
+                    <figure class="top">Top</figure>
+                    <figure class="bottom">Bottom</figure>
+                  </div>
+                  <div class="topStrap">
+                    <figure class="right"></figure>
+                    <figure class="left"></figure>
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                    <figure class="top"></figure>
+                    <figure class="bottom"></figure>
+                  </div>
+                  <div class="leftStrap">
+                    <figure class="right"></figure>
+                    <figure class="left"></figure>
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                    <!-- <figure class="top">Top</figure> -->
+                    <!-- <figure class="bottom">Bottom</figure> -->
+                  </div>
+                  <div class="rightStrap">
+                    <figure class="right"></figure>
+                    <figure class="left"></figure>
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                    <!-- <figure class="top">Top</figure> -->
+                    <!-- <figure class="bottom">Bottom</figure> -->
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="flexCols-4">
+      <div class="flexRows">
+        <div class="flexRow-2 borderBottom">
+          <div class="beaconSignal">
+            <div class="section-text">
+              <div class="section-text-header">
+                <h3>Beacon Signals</h3>
+              </div>
+            </div>
+            <div class="beaconSignal-beacons">
+              <div class="beaconSignal-beaconsContainer">
+                <div class="beaconSignal-beacons-item">
+                  <div class="beaconSignal-beacons-item-icon">
+                    01
+                  </div>
+                  <div class="beaconSignal-beacons-text">
+                    <h1 id="beaconSignal-beacons-text-1">0</h1>
+                    <h4>m</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="beaconSignal-beaconsContainer">
+                <div class="beaconSignal-beacons-item">
+                  <div class="beaconSignal-beacons-item-icon">
+                    02
+                  </div>
+                  <div class="beaconSignal-beacons-text">
+                    <h1 id="beaconSignal-beacons-text-2">0</h1>
+                    <h4>m</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="beaconSignal-beaconsContainer">
+                <div class="beaconSignal-beacons-item">
+                  <div class="beaconSignal-beacons-item-icon">
+                    03
+                  </div>
+                  <div class="beaconSignal-beacons-text">
+                    <h1 id="beaconSignal-beacons-text-3">0</h1>
+                    <h4>m</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flexRow-2 borderBottom">
+          <div class="pressure section">
+            <div class="section-text">
+              <div class="section-text-header">
+                <h3>Left</h3>
+                <h3>Pressure</h3>
+              </div>
+              <div class="section-text-value">
+                <h1 id="pressureLabel-left">0</h1>
+                <h4>N</h4>
+              </div>
+            </div>
+            <div class="pressure-diagram">
+              <div class="foots">
+                <div class="foots-foot foots-left">
+                  <div class="foots-foot-outline"></div>
+                  <div class="foots-foot-solid">
+                    <div id="foots-foot-solid-foot-left" class="foots-foot-solid-foot"></div>
+                  </div>
+                </div>
+                <div class="foots-foot foots-right">
+                  <div class="foots-foot-outline"></div>
+                  <div class="foots-foot-solid">
+                    <div id="foots-foot-solid-foot-right" class="foots-foot-solid-foot"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section-text">
+              <div class="section-text-header">
+                <h3>right</h3>
+                <h3>Pressure</h3>
+              </div>
+              <div class="section-text-value">
+                <h1 id="pressureLabel-right">0</h1>
+                <h4>N</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flexRow-4">
+          <div class="gyro">
+            <div class="gyro-text">
+              <div class="gyro-text-header">
+                <h3>RIGHT FOOT</h3>
+                <h3>3-AXIS GYRO</h3>
+              </div>
+              <div class="gyro-text-values">
+                <div class="gyro-text-values-item">
+                  <h1 id="gyro-text-values-item-x-right">0</h1>
+                  <h4>X-AXIS</h4>
+                </div>
+                <div class="gyro-text-values-item">
+                  <h1 id="gyro-text-values-item-y-right">0</h1>
+                  <h4>Y-AXIS</h4>
+                </div>
+                <div class="gyro-text-values-item">
+                  <h1 id="gyro-text-values-item-z-right">0</h1>
+                  <h4>Z-AXIS</h4>
+                </div>
+              </div>
+            </div>
+            <div class="gyro-diagram">
+              <section class="boxContainer">
+                <div id="box-right" class="box">
+                  <figure class="right"></figure>
+                  <figure class="left"></figure>
+                  <figure class="front"></figure>
+                  <figure class="back"></figure>
+                  <figure class="top"></figure>
+                  <figure class="bottom"></figure>
+                  <div class="base">
+                    <figure class="right">Right</figure>
+                    <figure class="left">Left</figure>
+                    <figure class="front">Front</figure>
+                    <figure class="back">Back</figure>
+                    <figure class="top">Top</figure>
+                    <figure class="bottom">Bottom</figure>
+                  </div>
+                  <div class="topStrap">
+                    <figure class="right"></figure>
+                    <figure class="left"></figure>
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                    <figure class="top"></figure>
+                    <figure class="bottom"></figure>
+                  </div>
+                  <div class="leftStrap">
+                    <figure class="right"></figure>
+                    <figure class="left"></figure>
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                    <!-- <figure class="top">Top</figure> -->
+                    <!-- <figure class="bottom">Bottom</figure> -->
+                  </div>
+                  <div class="rightStrap">
+                    <figure class="right"></figure>
+                    <figure class="left"></figure>
+                    <figure class="front"></figure>
+                    <figure class="back"></figure>
+                    <!-- <figure class="top">Top</figure> -->
+                    <!-- <figure class="bottom">Bottom</figure> -->
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testingToola">
+    <div class="sliders">
+      <div class="sliders-x">
+        <input id="sliders-x-slider" type="range" min="-360" max="360" value="50">
+        <label id="sliders-x-label">Hello</label>
+      </div>
+      <div class="sliders-y">
+        <input id="sliders-y-slider" type="range" min="-360" max="360" value="50">
+        <label id="sliders-y-label">Hello</label>
+      </div>
+      <div class="sliders-z">
+        <input id="sliders-z-slider" type="range" min="-360" max="360" value="50">
+        <label id="sliders-z-label">Hello</label>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <script>
+    // FALL DETECTION
+    var fallModal = document.getElementById('fallDetected')
+    // var fallDetected = false;
+    var snd = new Audio("img/alarm.wav"); // buffers automatically when created
+    let floorPlanInfo1 = document.getElementById("floorPlanInfo-item-1")
+
+    // if (fallDetected) {
+    //   fallModal.className = "fallDetected fallfade"
+    //   fallModal.style.display = "flex"
+    //   snd.play();
+    // }
+    // else{
+    //   fallModal.className = "fallDetected"
+    //   fallModal.style.display = "none"
+    //   snd.pause();
+    // }
+
+    fallModal.addEventListener('click', function(){
+      cancelFall()
+    })
+
+    function triggerFall(){
+      fallModal.className = "fallDetected fallfade"
+      fallModal.style.display = "flex"
+      floorPlanInfo1.innerHTML = "High"
+      snd.play();
+    }
+
+    function cancelFall(){
+      fallModal.className = "fallDetected"
+      fallModal.style.display = "none"
+      floorPlanInfo1.innerHTML = "Low"
+      snd.pause();
+    }
+
+    function roundToTwoDecimal(number){
+      return Math.round((number + 0.00001) * 100) / 100
+    }
+
+    // from serve
+    const MAX_X = 25
+    const MAX_Y = 25
+
+    // actual pixels
+    const MAX_X_MAP = 300
+    const MAX_Y_MAP = 300
+
+    // grid
+    const MAX_X_GRID = 100
+    const MAX_Y_GRID = 100
+
+    // walk
+    var current_location_x = 0
+    var current_location_y = 0
+    var interval_walking;
+
+    // ROOM PLAN
+    function setActiveRoom(x, y){
+      var bedroomBg = document.getElementById("fp-map-bedroom-bg")
+      var kitchenBg = document.getElementById("fp-map-kitchen-bg")
+      var tolietBg = document.getElementById("fp-map-toliet-bg")
+      var studyBg = document.getElementById("fp-map-study-bg")
+      var livingRoomBg = document.getElementById("fp-map-livingRoom-bg")
+      let floorPlanInfo2 = document.getElementById("floorPlanInfo-item-2")
+
+      var transX = x/MAX_X_MAP * MAX_X_GRID
+      var transY = y/MAX_Y_MAP * MAX_Y_GRID
+
+      // bedroom
+      if(transX >= 0 && transX <= 40 && transY >= 0 && transY <= 60 ){
+        // console.log("in bedroom");
+        bedroomBg.style.display = "block"
+        kitchenBg.style.display = "none"
+        tolietBg.style.display = "none"
+        studyBg.style.display = "none"
+        livingRoomBg.style.display = "none"
+        floorPlanInfo2.innerHTML = "Bedroom"
+      }
+      // kitchen
+      else if(transX >= 0 && transX <= 40 && transY >= 61 && transY <= 100){
+        // console.log("in kitchen");
+        bedroomBg.style.display = "none"
+        kitchenBg.style.display = "block"
+        tolietBg.style.display = "none"
+        studyBg.style.display = "none"
+        livingRoomBg.style.display = "none"
+        floorPlanInfo2.innerHTML = "Kitchen"
+      }
+      // toliet
+      else if( transX >= 51 && transX <= 100 && transY >= 0 && transY <= 24){
+        // console.log("in toliet");
+        bedroomBg.style.display = "none"
+        kitchenBg.style.display = "none"
+        tolietBg.style.display = "block"
+        studyBg.style.display = "none"
+        livingRoomBg.style.display = "none"
+        floorPlanInfo2.innerHTML = "Toliet"
+      }
+      //
+      else if( transX >= 51 && transX <= 100 && transY >= 25 && transY <= 60 ){
+        // console.log("in study");
+        bedroomBg.style.display = "none"
+        kitchenBg.style.display = "none"
+        tolietBg.style.display = "none"
+        studyBg.style.display = "block"
+        livingRoomBg.style.display = "none"
+        floorPlanInfo2.innerHTML = "Study"
+      }
+      else {
+        // console.log("in living room");
+        bedroomBg.style.display = "none"
+        kitchenBg.style.display = "none"
+        tolietBg.style.display = "none"
+        studyBg.style.display = "none"
+        livingRoomBg.style.display = "block"
+        floorPlanInfo2.innerHTML = "Living Room"
+      }
+    }
+
+    function walk(x, y){
+      var marker = document.getElementById('fp-human-marker')
+      clearInterval(interval_walking)
+      if (x !== current_location_x || y !== current_location_y){
+        interval_walking = setInterval(function(){
+          if (x !== current_location_x || y !== current_location_y){
+            if(x !== current_location_x){
+              if(x < current_location_x){
+                current_location_x--
+              }
+              else{
+                current_location_x++
+              }
+            }
+            if(y !== current_location_y){
+              if(y < current_location_y){
+                current_location_y--
+              }
+              else {
+                current_location_y++
+              }
+            }
+            marker.style.top = current_location_y + 'px'
+            marker.style.left = current_location_x + 'px'
+            setActiveRoom(current_location_x, current_location_y)
+          }
+          else{
+            clearInterval(interval_walking)
+          }
+        }, 100);
+      }
+    }
+
+    function placeMarker(x, y){
+      var transXMap = parseInt(x/MAX_X * MAX_X_MAP)
+      var transYMap = parseInt(y/MAX_Y * MAX_Y_MAP)
+
+      if(transXMap < 14){
+        transXMap = 14
+      }
+      else if(transXMap > MAX_X_MAP - 14){
+        transXMap = MAX_X_MAP - 14
+      }
+
+      if(transYMap < 14){
+        transYMap = 14
+      }
+      else if(transYMap > MAX_Y_MAP - 14){
+        transYMap = MAX_Y_MAP - 14
+      }
+      walk(transXMap, transYMap)
+    }
+
+    // floorPlanInfo
+    // let floorPlanInfo3 = document.getElementById("floorPlanInfo-item-3")
+    // let floorPlanInfo4 = document.getElementById("floorPlanInfo-item-4")
+
+    // floorPlanInfo3.innerHTML = "17m 12s"
+    // floorPlanInfo4.innerHTML = "10m 10s"
+
+    // BEACON
+    let beacon1 = document.getElementById("beaconSignal-beacons-text-1")
+    let beacon2 = document.getElementById("beaconSignal-beacons-text-2")
+    let beacon3 = document.getElementById("beaconSignal-beacons-text-3")
+
+    // PRESSURE
+    const MAX_PRESSURE = 1024
+    const MAX_NEWTON = 100
+
+    function calculatePressureColor(pressureValue){
+      var colorValue = Math.floor(pressureValue / MAX_PRESSURE * 470)
+      var r = 0
+      var g = 0
+      var b = 255
+
+      if(colorValue <= 191){
+        r = 191 - colorValue
+      }
+      else if(colorValue > 191 && colorValue <= 446){
+        g = colorValue - 191
+      }
+      else if(colorValue > 446 && colorValue <= 470){
+        g = 255
+        b -= (colorValue - 446)
+      }
+
+      let rgba = 'rgba(' + r + ', ' + g + ', ' + b + ', 1)'
+      return rgba
+    }
+
+    var leftFoot = document.getElementById("foots-foot-solid-foot-left")
+    var rightFoot = document.getElementById("foots-foot-solid-foot-right")
+    var pressureLabelLeft = document.getElementById("pressureLabel-left")
+    var pressureLabelRight = document.getElementById("pressureLabel-right")
+
+    var styleLeft = ''
+    var pressureLeft = 0
+    if(pressureLeft !== 0){
+      var color = calculatePressureColor(pressureLeft)
+      var styleLeft = 'linear-gradient(-180deg, ' + color + '70%, rgba(191, 0, 255, 1) 100%)'
+    }
+    var pressureLeftToNewtons =  roundToTwoDecimal(pressureLeft/MAX_PRESSURE * MAX_NEWTON)
+    leftFoot.style.backgroundImage = styleLeft
+    pressureLabelLeft.innerHTML = pressureLeftToNewtons
+
+
+    // GYRO
+    // axisRight
+    var axisLeft = document.getElementById("box-left")
+    var xLeft = 0
+    var yLeft = 0
+    var zLeft = 0
+    //labels
+    var xLabelLeft = document.getElementById("gyro-text-values-item-x-left")
+    var yLabelLeft = document.getElementById("gyro-text-values-item-y-left")
+    var zLabelLeft = document.getElementById("gyro-text-values-item-z-left")
+
+    // socket.on('gyro', function(data){
+    //   // set labels
+    //   xLabelLeft.innerHTML = parseInt(data['2'])
+    //   yLabelLeft.innerHTML = parseInt(data['1'])
+    //   zLabelLeft.innerHTML = parseInt(data['3'])
+    //
+    //   var parsed = {}
+    //   parsed['1'] = parseInt(data['1']) + 180
+    //   parsed['2'] = parseInt(data['2']) + 180
+    //   parsed['3'] = parseInt(data['3']) + 180
+    //   axisLeft.style.transform = 'rotateX(' + parsed['2'] + 'deg) rotateY(' + parsed['1'] + 'deg) rotateZ(' + parsed['3'] + 'deg)'
+    // })
+
+    xLabelLeft.innerHTML = 0
+    yLabelLeft.innerHTML = 0
+    zLabelLeft.innerHTML = 0
+    axisLeft.style.transform = 'rotateX(' + 10 + 'deg) rotateY(' + 20 + 'deg) rotateZ(' + 30 + 'deg)'
+
+    // axisRight
+    var axisRight = document.getElementById("box-right")
+    // var xRight = 0
+    // var yRight = 0
+    // var zRight = 0
+    //labels
+    var xLabelRight = document.getElementById("gyro-text-values-item-x-right")
+    var yLabelRight = document.getElementById("gyro-text-values-item-y-right")
+    var zLabelRight = document.getElementById("gyro-text-values-item-z-right")
+
+    // TEST AXIS
+    // xLabelRight.innerHTML = 50
+    // yLabelRight.innerHTML = 60
+    // zLabelRight.innerHTML = 70
+    // axisRight.style.transform = 'rotateX(' + 50 + 'deg) rotateY(' + 60 + 'deg) rotateZ(' + 70 + 'deg)'
+
+
+    // DATATATATATA
+    var socket = io('http://192.168.43.235:3000/')
+
+    socket.on('data', function(data){
+      if(!data['data']){
+        data = JSON.parse(data)
+      }
+
+      if(data['data'] === 'gyro'){
+        // set labels
+        xLabelRight.innerHTML = parseInt(data['2'])
+        yLabelRight.innerHTML = parseInt(data['1'])
+        zLabelRight.innerHTML = parseInt(data['3'])
+        var parsed = {}
+        parsed['2'] = -(parseInt(data['2'])) + 37
+        parsed['1'] = -(parseInt(data['1'])) + 200
+        parsed['3'] = (parseInt(data['3'])) -10
+        xLabelRight.innerHTML = parsed['2']
+        yLabelRight.innerHTML = parsed['1']
+        zLabelRight.innerHTML = parsed['3']
+        axisRight.style.transform = 'rotateX(' + parsed['2'] + 'deg) rotateY(' + parsed['1'] + 'deg) rotateZ(' + parsed['3'] + 'deg)'
+      }
+      else if(data['data'] === 'weemos'){
+        var styleRight = ''
+        var pressureRight = data['force']
+        if(pressureRight !== 0){
+          var color = calculatePressureColor(pressureRight)
+          var styleRight = 'linear-gradient(-180deg, ' + color + '70%, rgba(191, 0, 255, 1) 100%)'
+        }
+        var pressureRightToNewtons =  roundToTwoDecimal(pressureRight/MAX_PRESSURE * MAX_NEWTON)
+        rightFoot.style.backgroundImage = styleRight
+        pressureLabelRight.innerHTML = pressureRightToNewtons
+      }
+      else if(data['data'] === 'beacon'){
+        beacon1.innerHTML = roundToTwoDecimal(data.distances['left'])
+        beacon2.innerHTML = roundToTwoDecimal(data.distances['middle'])
+        beacon3.innerHTML = roundToTwoDecimal(data.distances['right'])
+        placeMarker(data.distances['x'], data.distances['y'])
+      }
+      else if(data['data'] === 'fall'){
+        triggerFall()
+      }
+    })
+
+    // Fall Algo
+    var timeout_fall_alarm
+    var isCountingDown = false
+
+    function checkForFall(shoeIsOn, pressure){
+      if(pressure < 300 && shoeIsOn){
+        if(!isCountingDown){
+          isCountingDown = true
+          timeout_fall_alarm = setTimeout(function(){
+            alert("alarm")
+          }, 15000)
+        }
+      }
+      else{
+        clearTimeout(timeout_fall_alarm)
+        isCountingDown = false
+      }
+    }
+
+    //gyro testing
+    // axis.style.transform = 'rotateX(' + 0 + 'deg) rotateY(' + 180 + 'deg) rotateZ(' + 90 + 'deg)'
+    // sliders
+    var sliderX = document.getElementById("sliders-x-slider")
+    var sliderY = document.getElementById("sliders-y-slider")
+    var sliderZ = document.getElementById("sliders-z-slider")
+    // labels
+    var sliderXLabel = document.getElementById("sliders-x-label")
+    var sliderYLabel = document.getElementById("sliders-y-label")
+    var sliderZLabel = document.getElementById("sliders-z-label")
+
+    sliderX.addEventListener("input", function() {
+      var value = sliderX.value
+      sliderXLabel.innerHTML = value
+      xRight = value
+      axisRight.style.transform = 'rotateX(' + xRight + 'deg) rotateY(' + yRight + 'deg) rotateZ(' + zRight + 'deg)'
+    }, false);
+
+    sliderY.addEventListener("input", function() {
+      var value = sliderY.value
+      sliderYLabel.innerHTML = value
+      yRight = value
+      axisRight.style.transform = 'rotateX(' + xRight + 'deg) rotateY(' + yRight + 'deg) rotateZ(' + zRight + 'deg)'
+    }, false);
+
+    sliderZ.addEventListener("input", function() {
+      var value = sliderZ.value
+      sliderZLabel.innerHTML = value
+      zRight = value
+      axisRight.style.transform = 'rotateX(' + xRight + 'deg) rotateY(' + yRight + 'deg) rotateZ(' + zRight + 'deg)'
+    }, false);
+  </script>
+
+</body>
+</html>
